@@ -8,8 +8,36 @@
       "avatar": "http",
       "createdAt": 1571213104370,
       "id": "Z2hlvDmLOSRZGebC_Z_aA"
+    },
+    {
+      "email": "abc@gmail.com",
+      "password": "123456",
+      "role": "ADMIN",
+      "verified": false,
+      "avatar": "http",
+      "createdAt": 1640866552347,
+      "id": "2IBUpybjINqShOl6ODhqO"
     }
   ],
-  "posts": [],
+  "posts": [
+    {
+      "message": "this is a new post!",
+      "author": "2IBUpybjINqShOl6ODhqO",
+      "createdAt": 1640871250876,
+      "id": "7z-R8Fyj1hfm0HsExp6TN"
+    },
+    {
+      "message": "this is a new post!",
+      "author": "2IBUpybjINqShOl6ODhqO",
+      "createdAt": 1640871294600,
+      "id": "cJWHm_Wu0bJ3KmXTWTKzD"
+    },
+    {
+      "message": "this is a new post!",
+      "author": "2IBUpybjINqShOl6ODhqO",
+      "createdAt": 1640871795136,
+      "id": "_Q3jXwzz4j9sUNOzYjvbd"
+    }
+  ],
   "settings": []
 }

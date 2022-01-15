@@ -101,4 +101,12 @@ module.exports = gql`
     signin(input: SigninInput!): AuthUser!
   }
 
+  type Item {
+    task: String!
+  }
+
+  type Subscription{
+    newPost: Post
+  }
+
 `

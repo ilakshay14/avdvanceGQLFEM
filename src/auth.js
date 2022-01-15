@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const {models} = require('./db')
+const { models } = require('./db')
 const secret = 'catpack'
 
 /**
@@ -7,7 +7,7 @@ const secret = 'catpack'
  * using user.id and user.role
  * @param {Object} user the user to create a jwt for
  */
-const createToken = ({id, role}) => jwt.sign({id, role }, secret)
+const createToken = ({ id, role }) => jwt.sign({ id, role }, secret)
 
 /**
  * will attemp to verify a jwt and find a user in the
@@ -18,7 +18,7 @@ const createToken = ({id, role}) => jwt.sign({id, role }, secret)
 const getUserFromToken = token => {
   try {
     const user = jwt.verify(token, secret)
-    return models.User.findOne({id: user.id})
+    return models.User.findOne({ id: user.id })
   } catch (e) {
     return null
   }
@@ -31,7 +31,11 @@ const getUserFromToken = token => {
  * @param {Function} next next resolver function ro run
  */
 const authenticated = next => (root, args, context, info) => {
-  
+  if (context.user) {
+    return next(root, args, context, info);
+  }
+
+  throw new Error('Users is not authenticated!')
 }
 
 /**
@@ -41,7 +45,11 @@ const authenticated = next => (root, args, context, info) => {
  * @param {Function} next next resolver function to run
  */
 const authorized = (role, next) => (root, args, context, info) => {
-  
+  if (context.user && context.user.role === role) {
+    return next(root, args, context, info);
+  }
+
+  throw new Error('Users is not authorized!')
 }
 
 module.exports = {
